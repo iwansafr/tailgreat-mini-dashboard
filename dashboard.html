@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- Top Navigation Bar -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="w-full px-4">
+            <div class="flex justify-between h-16">
+                <!-- Left side - Logo and hamburger -->
+                <div class="flex">
+                    <button class="px-4 py-2 text-gray-500 focus:outline-none lg:hidden" onclick="toggleSidebar()">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <div class="flex items-center">
+                        <span class="text-2xl font-bold text-blue-600">MyDash</span>
+                    </div>
+                </div>
+                
+                <!-- Right side - User profile and logout -->
+                <div class="flex items-center">
+                    <div class="relative">
+                        <button onclick="toggleDropdown()" class="flex items-center space-x-3 px-4 py-2 rounded-lg hover:bg-gray-100 focus:outline-none">
+                            <img src="https://ui-avatars.com/api/?name=John+Doe" alt="User Avatar" class="w-8 h-8 rounded-full">
+                            <span class="hidden md:block text-gray-700">John Doe</span>
+                            <i class="fas fa-chevron-down text-gray-500"></i>
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div id="userDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2">
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-user mr-2"></i> Profile
+                            </a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-cog mr-2"></i> Settings
+                            </a>
+                            <hr class="my-2">
+                            <a href="login.html" class="block px-4 py-2 text-red-600 hover:bg-gray-100">
+                                <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed left-0 top-16 h-full w-64 bg-white shadow-lg transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-40">
+        <div class="py-6">
+            <a href="dashboard.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600">
+                <i class="fas fa-home mr-3"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="report-chart.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600">
+                <i class="fas fa-chart-bar mr-3"></i>
+                <span>Analytics</span>
+            </a>
+            <a href="login.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600">
+                <i class="fas fa-users mr-3"></i>
+                <span>Login</span>
+            </a>
+            <a href="register.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600">
+                <i class="fas fa-users mr-3"></i>
+                <span>Register</span>
+            </a>
+            <a href="product-list.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600">
+                <i class="fas fa-cog mr-3"></i>
+                <span>Product List</span>
+            </a>
+            <a href="#" class="flex items-center px-6 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600">
+                <i class="fas fa-cog mr-3"></i>
+                <span>Settings</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="lg:ml-64 pt-16 min-h-screen">
+        <div class="p-6">
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-blue-100 text-blue-600">
+                            <i class="fas fa-users text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-gray-500">Total Users</p>
+                            <p class="text-2xl font-semibold">1,482</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-green-100 text-green-600">
+                            <i class="fas fa-chart-line text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-gray-500">Revenue</p>
+                            <p class="text-2xl font-semibold">$8,942</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-yellow-100 text-yellow-600">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-gray-500">Orders</p>
+                            <p class="text-2xl font-semibold">267</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-red-100 text-red-600">
+                            <i class="fas fa-bell text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-gray-500">Alerts</p>
+                            <p class="text-2xl font-semibold">12</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Recent Activity</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                        <p class="ml-3 text-gray-600">New user registered</p>
+                        <span class="ml-auto text-sm text-gray-500">2 min ago</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 bg-green-600 rounded-full"></div>
+                        <p class="ml-3 text-gray-600">Sales report generated</p>
+                        <span class="ml-auto text-sm text-gray-500">1 hour ago</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 bg-yellow-600 rounded-full"></div>
+                        <p class="ml-3 text-gray-600">New order received</p>
+                        <span class="ml-auto text-sm text-gray-500">3 hours ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleDropdown() {
+            document.getElementById('userDropdown').classList.toggle('hidden');
+        }
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('-translate-x-full');
+        }
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(e) {
+            if (!e.target.closest('.relative')) {
+                document.getElementById('userDropdown').classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
+

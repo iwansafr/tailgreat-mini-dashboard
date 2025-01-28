@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-semibold text-gray-800">Store</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="flex items-center space-x-2 hover:text-blue-600">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Cart (0)</span>
+                    </button>
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 hover:text-blue-600">
+                            <img src="https://placekitten.com/32/32" class="w-8 h-8 rounded-full">
+                            <span>John Doe</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Filters Sidebar -->
+            <div class="w-full md:w-64 space-y-6">
+                <!-- Categories -->
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h3 class="font-semibold text-gray-800 mb-4">Categories</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded text-blue-600">
+                            <span class="ml-2">Electronics</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded text-blue-600">
+                            <span class="ml-2">Clothing</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded text-blue-600">
+                            <span class="ml-2">Books</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded text-blue-600">
+                            <span class="ml-2">Home & Garden</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Price Range -->
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h3 class="font-semibold text-gray-800 mb-4">Price Range</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm text-gray-600">Min Price</label>
+                            <input type="number" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-600">Max Price</label>
+                            <input type="number" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <button class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200">
+                            Apply Filter
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="flex-1">
+                <!-- Search and Sort -->
+                <div class="bg-white p-4 rounded-lg shadow mb-6">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1">
+                            <input type="search" placeholder="Search products..." class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <select class="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <option>Sort by: Featured</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                            <option>Rating</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Product Card -->
+                    <div class="bg-white rounded-lg shadow hover:shadow-lg transition duration-200">
+                        <img src="https://via.placeholder.com/300" alt="Product" class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-2">Product Name</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="text-gray-600 text-sm ml-2">(24 reviews)</span>
+                            </div>
+                            <p class="text-gray-600">$99.99</p>
+                            <button class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Loading Placeholder -->
+                    <div class="bg-white rounded-lg shadow animate-pulse">
+                        <div class="w-full h-48 bg-gray-300 rounded-t-lg"></div>
+                        <div class="p-4 space-y-4">
+                            <div class="h-4 bg-gray-300 rounded w-3/4"></div>
+                            <div class="h-4 bg-gray-300 rounded w-1/2"></div>
+                            <div class="h-4 bg-gray-300 rounded w-1/4"></div>
+                            <div class="h-10 bg-gray-300 rounded"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="mt-8 flex justify-center">
+                    <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
+                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                            <span class="sr-only">Previous</span>
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">1</a>
+                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-blue-50 text-sm font-medium text-blue-600 hover:bg-blue-100">2</a>
+                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">3</a>
+                        <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">...</span>
+                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">8</a>
+                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                            <span class="sr-only">Next</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

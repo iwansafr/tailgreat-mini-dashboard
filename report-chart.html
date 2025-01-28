@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Charts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h1 class="text-2xl font-bold text-gray-900 mb-8">Sales Analytics</h1>
+        
+        <!-- Charts -->
+        <div class="grid grid-cols-1 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-lg font-semibold mb-4">Monthly Revenue</h2>
+                <canvas id="monthlyRevenue"></canvas>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-lg font-semibold mb-4">Year over Year Comparison</h2>
+                <canvas id="yearComparison"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Monthly Revenue Chart
+        const monthlyRevenueCtx = document.getElementById('monthlyRevenue').getContext('2d');
+        new Chart(monthlyRevenueCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Revenue 2023',
+                    data: [45000, 52000, 49000, 58000, 63000, 60000, 66000, 70000, 75000, 80000, 85000, 90000],
+                    borderColor: 'rgb(79, 70, 229)',
+                    backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: value => '$' + value.toLocaleString()
+                        }
+                    }
+                }
+            }
+        });
+
+        // Year over Year Comparison Chart
+        const yearComparisonCtx = document.getElementById('yearComparison').getContext('2d');
+        new Chart(yearComparisonCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: '2023',
+                    data: [45000, 52000, 49000, 58000, 63000, 60000, 66000, 70000, 75000, 80000, 85000, 90000],
+                    borderColor: 'rgb(79, 70, 229)',
+                    tension: 0.3
+                },
+                {
+                    label: '2022',
+                    data: [42000, 48000, 45000, 52000, 55000, 53000, 58000, 62000, 65000, 70000, 73000, 78000],
+                    borderColor: 'rgb(219, 39, 119)',
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: value => '$' + value.toLocaleString()
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
